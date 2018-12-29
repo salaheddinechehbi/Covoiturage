@@ -1,10 +1,10 @@
-<%-- 
-    Document   : index
-    Created on : 28 déc. 2018, 10:17:47
-    Author     : salah
---%>
 
+<%@page import="service.UserService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    UserService us = new UserService();
+    int countUser = us.count();
+%> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,17 +69,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="income-dashone-pro">
-                                        <div class="income-rate-total">
-                                            <div class="price-adminpro-rate">
-                                                <h3><span>$</span><span class="counter">60888200</span></h3>
-                                            </div>
-                                            <div class="price-graph">
-                                                <span id="sparkline1"></span>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -91,17 +80,6 @@
                                                 <p>Annual</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="income-dashone-pro">
-                                        <div class="income-rate-total">
-                                            <div class="price-adminpro-rate">
-                                                <h3><span class="counter">72320</span></h3>
-                                            </div>
-                                            <div class="price-graph">
-                                                <span id="sparkline6"></span>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
@@ -115,39 +93,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="income-dashone-pro">
-                                        <div class="income-rate-total">
-                                            <div class="price-adminpro-rate">
-                                                <h3><span class="counter">888200</span></h3>
-                                            </div>
-                                            <div class="price-graph">
-                                                <span id="sparkline2"></span>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="income-dashone-total shadow-reset nt-mg-b-30">
                                     <div class="income-title">
                                         <div class="main-income-head">
-                                            <h2>User activity</h2>
+                                            <h2>Users</h2>
                                             <div class="main-income-phara low-value-cl">
-                                                <p>Low Value</p>
+                                                <p><%= countUser %></p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="income-dashone-pro">
-                                        <div class="income-rate-total">
-                                            <div class="price-adminpro-rate">
-                                                <h3><span class="counter">88200</span></h3>
-                                            </div>
-                                            <div class="price-graph">
-                                                <span id="sparkline5"></span>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
