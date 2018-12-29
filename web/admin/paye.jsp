@@ -1,8 +1,3 @@
-<%-- 
-    Document   : paye
-    Created on : 28 déc. 2018, 11:11:58
-    Author     : salah
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
