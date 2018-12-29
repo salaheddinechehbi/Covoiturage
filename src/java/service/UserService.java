@@ -57,6 +57,26 @@ public class UserService implements IDao<User>{
         session.close();
         return users;
     }
+    
+   public User Login(String email,String pass) {
+        User user = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        user = (User) session.createQuery("From User WHERE email=:email and pass=:pass").setParameter("email", email).setParameter("pass", pass).uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return user;
+    } 
+   
+   public int count() {
+        int count = 0;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        count = Integer.parseInt(session.createQuery("Select COUNT(*) From User").uniqueResult().toString());
+        session.getTransaction().commit();
+        session.close();
+        return count;
+    } 
 
     
     

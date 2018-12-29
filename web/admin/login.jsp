@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Pays</title>
+        <title>Log In</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon============================================ -->
@@ -49,7 +49,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2"></div>
-                                <form id="adminpro-form" class="adminpro-form" action="index.jsp"a>
+                                <form id="adminpro-form" method="POST" class="adminpro-form" action="../Login"a>
                                     <div class="col-lg-6">
                                         <div class="login-bg">
                                             <div class="row">
