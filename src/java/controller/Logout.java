@@ -8,29 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import service.UserService;
 
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
+public class Logout extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-            UserService us = new UserService();
-            
-            if (us.Login(email, pass) == null) {
-                response.sendRedirect("../Covoiturage/admin/login.jsp");
-            } else {
-                session.setAttribute("id", us.Login(email, pass).getId());
-                session.setAttribute("email", email);
-                response.sendRedirect("../Covoiturage/admin/index.jsp");
-            }
-
+            session.removeAttribute("email");
+            session.removeAttribute("id");
+            session.invalidate();
+            response.sendRedirect("index.jsp");
         }
     }
 
