@@ -1,6 +1,6 @@
 
 <%@page import="beans.Paye"%>
-<%@page import="services.payeServices"%>
+<%@page import="service.payeServices"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
