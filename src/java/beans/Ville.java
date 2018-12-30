@@ -18,24 +18,24 @@ public class Ville {
     @Id
     @GeneratedValue
     private int id;
-    private String Nom;
-    private int lang;
-    private int lat;
+    private String nom;
+    private Double lang;
+    private Double lat;
     private int idPays;
 
     public Ville() {
     }
 
-    public Ville(String Nom, int lang, int lat, int idPays) {
-        this.Nom = Nom;
+    public Ville(String Nom, Double lang, Double lat, int idPays) {
+        this.nom = Nom;
         this.lang = lang;
         this.lat = lat;
         this.idPays = idPays;
     }
 
-    public Ville(int id, String Nom, int lang, int lat, int idPays) {
+    public Ville(int id, String Nom, Double lang, Double lat, int idPays) {
         this.id = id;
-        this.Nom = Nom;
+        this.nom = Nom;
         this.lang = lang;
         this.lat = lat;
         this.idPays = idPays;
@@ -50,26 +50,26 @@ public class Ville {
     }
 
     public String getNom() {
-        return Nom;
+        return nom;
     }
 
     public void setNom(String Nom) {
-        this.Nom = Nom;
+        this.nom = Nom;
     }
 
-    public int getLang() {
+    public Double getLang() {
         return lang;
     }
 
-    public void setLang(int lang) {
+    public void setLang(Double lang) {
         this.lang = lang;
     }
 
-    public int getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(int lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
@@ -83,11 +83,7 @@ public class Ville {
 
     @Override
     public String toString() {
-        return "Ville{" + "id=" + id + ", Nom=" + Nom + ", lang=" + lang + ", lat=" + lat + ", idPays=" + idPays + '}';
+        return "Ville{" + "id=" + id + ", Nom=" + nom + ", lang=" + lang + ", lat=" + lat + ", idPays=" + idPays + '}';
     }
-    
-    
-    
-    
-    
+  
 }
