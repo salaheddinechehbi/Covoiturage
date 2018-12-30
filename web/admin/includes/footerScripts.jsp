@@ -47,3 +47,7 @@
         <script src="vendor/js/data-table/bootstrap-table-export.js"></script>
         <!-- main JS============================================ -->
         <script src="vendor/js/main.js"></script>
+        <script src="vendor/js/myDataTable/moment.js" type="text/javascript"></script>
+        <script src="vendor/js/myDataTable/sweet.js" type="text/javascript"></script>
+        <script src="vendor/js/myDataTable/datatables.min.js" type="text/javascript"></script>
+        <script src="vendor/js/myDataTable/jquery.dataTables.min.js" type="text/javascript"></script>

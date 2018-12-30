@@ -30,3 +30,5 @@
         <link rel="stylesheet" href="vendor/css/responsive.css">
         <!-- modernizr JS============================================ -->
         <script src="vendor/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link href="vendor/css/myDataTable/datatables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="vendor/css/myDataTable/datatables.min.css" rel="stylesheet" type="text/css"/>
