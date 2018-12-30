@@ -18,17 +18,23 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            
+
             String email = request.getParameter("email");
             String pass = request.getParameter("password");
             UserService us = new UserService();
-            
+
             if (us.Login(email, pass) == null) {
-                response.sendRedirect("../Covoiturage/admin/login.jsp");
+                response.sendRedirect("../Covoiturage/ad/login.jsp");
             } else {
-                session.setAttribute("id", us.Login(email, pass).getId());
-                session.setAttribute("email", email);
-                response.sendRedirect("../Covoiturage/admin/index.jsp");
+                if (us.Login(email, pass).getProfil() == "Admin") {
+                    session.setAttribute("id", us.Login(email, pass).getId());
+                    session.setAttribute("email", email);
+                    response.sendRedirect("../Covoiturage/ad/index.jsp");
+                }else if(us.Login(email, pass).getProfil()=="User"){
+                    session.setAttribute("id", us.Login(email, pass).getId());
+                    session.setAttribute("email", email);
+                    response.sendRedirect("../Covoiturage/cl/index.jsp");
+                }
             }
 
         }

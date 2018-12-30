@@ -18,11 +18,12 @@ public class User {
     private String img;
     private String cle;
     private int active;
+    private String profil;
 
     public User() {
     }
 
-    public User(int id, String nom, String email, String tel, String pass, String img, String cle, int active) {
+    public User(int id, String nom, String email, String tel, String pass, String img, String cle, int active, String profil) {
         this.id = id;
         this.nom = nom;
         this.email = email;
@@ -31,9 +32,10 @@ public class User {
         this.img = img;
         this.cle = cle;
         this.active = active;
+        this.profil = profil;
     }
 
-    public User(String nom, String email, String tel, String pass, String img, String cle, int active) {
+    public User(String nom, String email, String tel, String pass, String img, String cle, int active, String profil) {
         this.nom = nom;
         this.email = email;
         this.tel = tel;
@@ -41,7 +43,18 @@ public class User {
         this.img = img;
         this.cle = cle;
         this.active = active;
+        this.profil = profil;
     }
+
+    public String getProfil() {
+        return profil;
+    }
+
+    public void setProfil(String profil) {
+        this.profil = profil;
+    }
+
+    
 
     public int getId() {
         return id;
