@@ -49,5 +49,7 @@ Contributor(s):
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="beans.User"/>
+    <mapping class="beans.Paye"/>
+    <mapping class="beans.Ville"/>
   </session-factory>
 </hibernate-configuration>

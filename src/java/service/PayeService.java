@@ -1,16 +1,15 @@
-
 package service;
 
 import dao.IDao;
-import beans.User;
+import beans.Paye;
 import java.util.List;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-public class UserService implements IDao<User>{
+public class PayeService implements IDao<Paye>{
 
     @Override
-    public void create(User o) {
+    public void create(Paye o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(o);
@@ -19,7 +18,7 @@ public class UserService implements IDao<User>{
     }
 
     @Override
-    public void delete(User o) {
+    public void delete(Paye o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(o);
@@ -28,7 +27,7 @@ public class UserService implements IDao<User>{
     }
 
     @Override
-    public void update(User o) {
+    public void update(Paye o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(o);
@@ -37,47 +36,35 @@ public class UserService implements IDao<User>{
     }
 
     @Override
-    public User findById(int id) {
-        User user = null;
+    public Paye findById(int id) {
+        Paye paye = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        user = (User) session.get(User.class, id);
+        paye = (Paye) session.get(Paye.class, id);
         session.getTransaction().commit();
         session.close();
-        return user;
+        return paye;
     }
 
     @Override
-    public List<User> findAll() {
-        List<User> users = null;
+    public List<Paye> findAll() {
+        List<Paye> payes = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        users = session.createQuery("From User").list();
+        payes = session.createQuery("From Paye").list();
         session.getTransaction().commit();
         session.close();
-        return users;
+        return payes;
     }
     
-   public User Login(String email,String pass) {
-        User user = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        user = (User) session.createQuery("From User WHERE email=:email and pass=:pass").setParameter("email", email).setParameter("pass", pass).uniqueResult();
-        session.getTransaction().commit();
-        session.close();
-        return user;
-    } 
-   
-   public int count() {
+    public int count() {
         int count = 0;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        count = Integer.parseInt(session.createQuery("Select COUNT(*) From User").uniqueResult().toString());
+        count = Integer.parseInt(session.createQuery("Select COUNT(*) From Paye").uniqueResult().toString());
         session.getTransaction().commit();
         session.close();
         return count;
     } 
-
-    
     
 }

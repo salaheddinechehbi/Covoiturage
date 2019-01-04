@@ -1,4 +1,6 @@
 
+<%@page import="service.VilleService"%>
+<%@page import="service.PayeService"%>
 <%@page import="service.UserService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -10,7 +12,12 @@
         response.sendRedirect("../index.jsp");
     }
     UserService us = new UserService();
+    PayeService ps = new PayeService();
+    VilleService vs = new VilleService();
+    
     int countUser = us.count();
+    int countVille = vs.count();
+    int countPaye = ps.count();
 %> 
 <!DOCTYPE html>
 <html>
@@ -52,9 +59,9 @@
                                 <div class="income-dashone-total shadow-reset nt-mg-b-30">
                                     <div class="income-title">
                                         <div class="main-income-head">
-                                            <h2>Orders</h2>
+                                            <h2>Pays</h2>
                                             <div class="main-income-phara order-cl">
-                                                <p>Annual</p>
+                                                <p><%= countPaye %></p>
                                             </div>
                                         </div>
                                     </div>
@@ -64,9 +71,9 @@
                                 <div class="income-dashone-total shadow-reset nt-mg-b-30">
                                     <div class="income-title">
                                         <div class="main-income-head">
-                                            <h2>Visitor</h2>
+                                            <h2>Villes</h2>
                                             <div class="main-income-phara visitor-cl">
-                                                <p>Today</p>
+                                                <p><%= countVille %></p>
                                             </div>
                                         </div>
                                     </div>

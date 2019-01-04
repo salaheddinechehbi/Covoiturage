@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-         response.sendRedirect("http://localhost:20100/Covoiturage/admin/login.jsp");
+         response.sendRedirect("ad/login.jsp");
       %>
     </body>
 </html>

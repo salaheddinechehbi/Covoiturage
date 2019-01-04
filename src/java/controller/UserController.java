@@ -23,7 +23,7 @@ public class UserController extends HttpServlet {
             UserService us = new UserService();
             us.delete(us.findById(id));
             Gson js = new Gson();
-            out.write(js.toJson(us.FindAll()));
+            out.write(js.toJson(us.findAll()));
         }
     }
 

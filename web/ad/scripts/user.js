@@ -31,9 +31,6 @@ $(document).on('click', '#deleteU', function () {
 
 function display(data) {
     var row = '';
-    row += '<table id="userTable">';
-    row += '<thead><tr><th data-field="name">Nom</th><th data-field="email">Email</th><th data-field="phone">Phone</th>'
-    row += '<th data-field="number">Etat</th><th>Supprimer</th></tr></thead><tbody>';
     for (var i = 0; i < data.length; i++) {
         row += '<tr>';
         row += '<td>' + data[i].nom + '</td>';
@@ -45,10 +42,7 @@ function display(data) {
         row += '<td><button id="deleteU" class="btn btn-custon-four btn-danger" data="' + data[i].id + '" ><span class="adminpro-icon adminpro-danger-error"></span>Supprimer</button></td>';
         row += '</tr>';
     }
-    row += '</tbody>';
-    row += '</table>';
-    $("#divtable").empty();
-    $("#divtable").html(row);
-    $("#userTable").dataTable();
+    $("#table2").empty();
+    $("#table2").html(row);
 }
 

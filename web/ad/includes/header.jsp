@@ -68,8 +68,25 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                <span class="fa big-icon fa-table"></span>
+                                                <span class="admin-name">Gestion</span>
+                                                <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
+                                            </a>
+                                            <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
+                                                <li><a href="paye.jsp"><span class="fa big-icon fa-table"></span> Pays</a>
+                                                </li>
+                                                <li><a href="user.jsp"><span class="fa big-icon fa-table"></span> Users</a>
+                                                </li>
+                                                <li><a href="ville.jsp"><span class="fa big-icon fa-table"></span> Villes</a>
+                                                </li>
+                                                <li><a href="trajet.jsp"><span class="fa big-icon fa-table"></span> Trajets</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                 <span class="adminpro-icon adminpro-user-rounded header-riht-inf"></span>
-                                                <span class="admin-name">Advanda Cro</span>
+                                                <span class="admin-name">User</span>
                                                 <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
                                             </a>
                                             <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
@@ -79,6 +96,7 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </div>

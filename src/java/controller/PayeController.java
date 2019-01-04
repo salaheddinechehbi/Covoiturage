@@ -1,6 +1,8 @@
+
 package controller;
 
-import beans.User;
+import beans.Paye;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,36 +10,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import service.UserService;
+import service.PayeService;
 
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "PayeController", urlPatterns = {"/PayeController"})
+public class PayeController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/Json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-            UserService us = new UserService();
-
-            if (us.Login(email, pass) == null) {
-                response.sendRedirect("../Covoiturage/ad/login.jsp");
-            } else {
-                User u = new User();
-                u = us.Login(email, pass);
-                session.setAttribute("id", u.getId());
-                session.setAttribute("email", email);
-                if (u.getProfil().equals("Admin")) {
-                    response.sendRedirect("../Covoiturage/ad/index.jsp");
-                }else if(u.getProfil().equals("User")){
-                    response.sendRedirect("../Covoiturage/cl/index.jsp");
-                }
+            String fonc = request.getParameter("btn");
+            PayeService ps = new PayeService();
+            if (fonc.equals("Ajouter")) {
+                String nom = request.getParameter("nom");
+                ps.create(new Paye(nom));
             }
-
+            else if (fonc.equals("Delete")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                ps.delete(ps.findById(id));
+            }
+            else if (fonc.equals("Modifier")) {
+                String nom = request.getParameter("nom");
+                int id = Integer.parseInt(request.getParameter("id"));
+                Paye p = new Paye();
+                p.setNom(nom);
+                p.setId(id);
+                ps.update(p);
+            }
+            Gson json = new Gson();
+            out.write(json.toJson(ps.findAll()));
         }
     }
 
