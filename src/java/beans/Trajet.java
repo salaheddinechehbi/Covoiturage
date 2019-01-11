@@ -7,14 +7,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Trajet {
   
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String heureDepart;
+    @OneToOne
+    private Ville villeDepart;
+    @Temporal(TemporalType.DATE)
     private Date dateDepart;
+    private String heureDepart;
+    @OneToOne
+    private Ville villeArriver;
+    @Temporal(TemporalType.DATE)
+    private Date dateArriver;
+    private String heureArriver;
     private int nbrPlace;
     private String commentaire;
     private int route;
@@ -24,23 +34,65 @@ public class Trajet {
     public Trajet() {
     }
 
-    public Trajet(int id, String heureDepart, Date dateDepart, int nbrPlace, String commentaire, int route, User user) {
+    public Trajet(int id, Ville villeDepart, Date dateDepart, String heureDepart, Ville villeArriver, Date dateArriver, String heureArriver, int nbrPlace, String commentaire, int route, User user) {
         this.id = id;
-        this.heureDepart = heureDepart;
+        this.villeDepart = villeDepart;
         this.dateDepart = dateDepart;
+        this.heureDepart = heureDepart;
+        this.villeArriver = villeArriver;
+        this.dateArriver = dateArriver;
+        this.heureArriver = heureArriver;
         this.nbrPlace = nbrPlace;
         this.commentaire = commentaire;
         this.route = route;
         this.user = user;
     }
 
-    public Trajet(String heureDepart, Date dateDepart, int nbrPlace, String commentaire, int route, User user) {
-        this.heureDepart = heureDepart;
+    public Trajet(Ville villeDepart, Date dateDepart, String heureDepart, Ville villeArriver, Date dateArriver, String heureArriver, int nbrPlace, String commentaire, int route, User user) {
+        this.villeDepart = villeDepart;
         this.dateDepart = dateDepart;
+        this.heureDepart = heureDepart;
+        this.villeArriver = villeArriver;
+        this.dateArriver = dateArriver;
+        this.heureArriver = heureArriver;
         this.nbrPlace = nbrPlace;
         this.commentaire = commentaire;
         this.route = route;
         this.user = user;
+    }
+
+    public Date getDateArriver() {
+        return dateArriver;
+    }
+
+    public void setDateArriver(Date dateArriver) {
+        this.dateArriver = dateArriver;
+    }
+
+    public String getHeureArriver() {
+        return heureArriver;
+    }
+
+    public void setHeureArriver(String heureArriver) {
+        this.heureArriver = heureArriver;
+    }
+
+    
+
+    public Ville getVilleDepart() {
+        return villeDepart;
+    }
+
+    public void setVilleDepart(Ville villeDepart) {
+        this.villeDepart = villeDepart;
+    }
+
+    public Ville getVilleArriver() {
+        return villeArriver;
+    }
+
+    public void setVilleArriver(Ville villeArriver) {
+        this.villeArriver = villeArriver;
     }
 
     public int getId() {

@@ -8,7 +8,7 @@
     response.setHeader("Expires", "0");
     
     if(session.getAttribute("email")==null){
-        response.sendRedirect("../index.jsp");
+        response.sendRedirect("login.jsp");
     }
     
     PayeService ps = new PayeService();

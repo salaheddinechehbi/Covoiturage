@@ -1,4 +1,5 @@
 
+<%@page import="service.TrajetService"%>
 <%@page import="service.VilleService"%>
 <%@page import="service.PayeService"%>
 <%@page import="service.UserService"%>
@@ -9,12 +10,14 @@
     response.setHeader("Expires", "0");
     
     if(session.getAttribute("email")==null){
-        response.sendRedirect("../index.jsp");
+        response.sendRedirect("login.jsp");
     }
     UserService us = new UserService();
     PayeService ps = new PayeService();
     VilleService vs = new VilleService();
+    TrajetService ts = new TrajetService();
     
+    int countTrajet = ts.count();
     int countUser = us.count();
     int countVille = vs.count();
     int countPaye = ps.count();
@@ -47,9 +50,9 @@
                                 <div class="income-dashone-total shadow-reset nt-mg-b-30">
                                     <div class="income-title">
                                         <div class="main-income-head">
-                                            <h2>Income</h2>
+                                            <h2>Trajets</h2>
                                             <div class="main-income-phara">
-                                                <p>Monthly</p>
+                                                <p><%= countTrajet %></p>
                                             </div>
                                         </div>
                                     </div>

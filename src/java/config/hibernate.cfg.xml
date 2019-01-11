@@ -51,5 +51,6 @@ Contributor(s):
     <mapping class="beans.User"/>
     <mapping class="beans.Paye"/>
     <mapping class="beans.Ville"/>
+    <mapping class="beans.Trajet"/>
   </session-factory>
 </hibernate-configuration>

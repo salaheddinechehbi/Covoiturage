@@ -10,7 +10,7 @@
     response.setHeader("Expires", "0");
 
     if (session.getAttribute("email") == null) {
-        response.sendRedirect("../index.jsp");
+        response.sendRedirect("login.jsp");
     }
     PayeService ps = new PayeService();
     VilleService vs = new VilleService();
@@ -26,10 +26,6 @@
         <%@include file="includes/headerScripts.jsp"%>
         <style>
             #map {
-                height: 400px;  /* The height is 400 pixels */
-                width: 100%;  /* The width is the width of the web page */
-            }
-            #map2 {
                 height: 400px;  /* The height is 400 pixels */
                 width: 100%;  /* The width is the width of the web page */
             }
@@ -53,7 +49,7 @@
                                     <div class="sparkline8-list basic-res-b-30 shadow-reset">
                                         <div class="sparkline8-hd">
                                             <div class="main-sparkline8-hd">
-                                                <h1>Forme</h1>
+                                                <h1>Ajouter Ville</h1>
                                                 <div class="sparkline8-outline-icon">
                                                     <span class="sparkline8-collapse-link"><i class="fa fa-chevron-up"></i></span>
                                                 </div>
@@ -137,6 +133,7 @@
                                                             <th data-field="Lat" data-editable="true">Lathitude</th>
                                                             <th data-field="Modifier" >Modifier</th>
                                                             <th data-field="Suprimer" >Suprimer</th>
+                                                            <th data-field="ShowMap" >Localisation</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="table2">
@@ -150,6 +147,7 @@
                                                             <td><%=v.getLat()%></td>
                                                             <td><button class="btn btn-warning" id="updateV" data="<%=v.getId()%>"> Modifier</button></td>
                                                             <td><button class="btn btn-danger" id="deleteV" data="<%=v.getId()%>">Suprimer</button></td>
+                                                            <td><button class="btn btn-primary" id="showMap" lat-data="<%=v.getLat()%>" lng-data="<%=v.getLng()%>">Show Map</button></td>
                                                         </tr>
                                                         <%}%>
                                                     </tbody>
@@ -163,7 +161,7 @@
                     </div>
                     <!-- End of Table-->
 
-                    <!-- Table-->
+                    <!-- Map-->
                     <div class="basic-form-area mg-b-15">
                         <div class="container-fluid">
                             <div class="row">
@@ -185,36 +183,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End of Table-->
-                    <!-- Table-->
-                    <select id="sel">
-                        <option value="#">jhkj</option>
-                        <option value="-6.83255,34.01325">Rabat</option>
-                        <option value="-5.79975,35.76727">Tanger</option>
-                        <option value="-8.0343503,31.5988796">Kech</option>
-                    </select>
-                    <div class="basic-form-area mg-b-15">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="sparkline13-list shadow-reset">
-                                        <div class="sparkline13-hd">
-                                            <div class="main-sparkline13-hd">
-                                                <h1>Map</h1><button id="get">alller</button>
-                                                <div class="sparkline13-outline-icon">
-                                                    <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="sparkline13-graph">
-                                            <div id="map2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Table-->
                 </div>
 
             </div>
@@ -227,67 +195,8 @@
         <!-- Footer End-->
         <%@include file="includes/footerScripts.jsp" %> 
         <script src="scripts/ville.js" type="text/javascript"></script>
-        <script>
-
-            function initMap2() {
-                var directionsService = new google.maps.DirectionsService();
-                var directionsDisplay = new google.maps.DirectionsRenderer();
-                var casa = new google.maps.LatLng(33.58831, -7.61138);
-                var kech = new google.maps.LatLng(31.5988796, -8.0343503);
-                //var map2;
-                var optionsDi = {
-                    zoom: 9,
-                    center: kech
-                };
-                var map2 = new google.maps.Map(document.getElementById('map2'), optionsDi);
-                directionsDisplay.setMap(map2);
-
-                function calculateRoute() {
-                    //var d = [];
-                    //d = des.split(",");
-                    
-                    //var tot = new google.maps.LatLng(d[1], d[0]);
-                    var request = {
-                        origin: kech,
-                        destination: casa,
-                        travelMode: 'DRIVING'
-                    };
-                    directionsService.route(request, function (result, status) {
-                        console.log(result, status);
-                        if(status='OK'){
-                            directionsDisplay.setDirections(result);
-                        }
-                    });
-                }
-                document.getElementById('get').onclick = function () {
-                    calculateRoute();
-                };
-                
-                document.getElementById('sel').onclick = function (){
-                    var val = document.getElementById('sel').value;
-                    console.log(val);
-                    calculateRoute(val);
-                };
-            }
-
-            // Initialize and add the map
-            function initMap() {
-                // The location of Uluru
-                var casa = new google.maps.LatLng(33.58831, -7.61138);
-                var kech = new google.maps.LatLng(31.5988796, -8.0343503);
-                var options = {zoom: 5, center: kech}
-                // The map, centered at Uluru
-                var map = new google.maps.Map(document.getElementById('map'), options);
-                // The marker, positioned at Uluru
-                var marker = new google.maps.Marker({position: kech, map: map});
-                var marker1 = new google.maps.Marker({position: casa, map: map});
-            }
-
-
-
-        </script>
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUdTNV5AiadBEbprvloo3OCjrV_c3kYCo&callback=initMap2">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUdTNV5AiadBEbprvloo3OCjrV_c3kYCo">
         </script>
     </body>
 </html>
