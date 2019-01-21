@@ -1,629 +1,418 @@
 
-<%@page import="beans.Ville"%>
-<%@page import="beans.User"%>
-<%@page import="service.UserService"%>
+<%@page import="beans.Trajet"%>
 <%@page import="service.TrajetService"%>
-<%@page import="service.VilleService"%>
-<%@page import="service.PayeService"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    PayeService ps = new PayeService();
-    VilleService vs = new VilleService();
-    TrajetService ts = new TrajetService();
-    UserService us = new UserService();
-%>
+<%@page import="service.UserService"%>
+<%@page import="beans.User"%>
 <!DOCTYPE html>
-<html>
+<!--[if IE 7]>                  <html class="ie7 no-js" lang="en">     <![endif]-->
+<!--[if lte IE 8]>              <html class="ie8 no-js" lang="en">     <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="en">  <!--<![endif]-->
     <head>
-        <title>Wacky Trip</title>
-        <!-- meta-tags -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Wacky Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-            function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <!-- //meta-tags -->
-        <link href="vendorC/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="vendorC/css/font-awesome.css" rel="stylesheet"> 
-        <link rel="stylesheet" href="vendorC/css/owl.carousel.css" type="text/css" media="all"/> <!-- Owl-Carousel-CSS -->
-        <link rel="stylesheet" href="vendorC/css/flexslider.css" type="text/css" media="screen" property="" />
-        <link href="vendorC/css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link rel="stylesheet" href="vendorC/css/lightbox.css">
-        <!--web-fonts-->
-        <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-        <link href="//fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-        <link href="//fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet">
-        <!--//web-fonts-->
+
+        <!-- Basic Page Needs -->
+        <meta charset="utf-8">
+        <title>My ride</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Styles -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Forms -->
+        <link href="css/jquery.idealforms.css" rel="stylesheet">
+        <!-- Select  -->
+        <link href="css/jquery.idealselect.css" rel="stylesheet">
+        <!-- Slicknav  -->
+        <link href="css/slicknav.css" rel="stylesheet">
+        <!-- Main style -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Modernizr -->
+        <script src="js/modernizr.js"></script>
+
+        <!-- Fonts -->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
     </head>
+
     <body>
-        <!-- banner -->
-        <div class="banner" id="home">
-            <div class="agileinfo-dot">
-                <div class="container">
-                    <!-- header -->
-                    <header>
-                        <!-- navigation -->
-                        <div class="w3_navigation">
-                            <nav class="navbar navbar-default">
-                                <div class="navbar-header navbar-left">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <div class="w3_navigation_pos">
-                                        <h1><a href="index.html"><span>W</span>acky <span>T</span>rip</a></h1>
+
+
+        <header class="header">
+            <%@include file="includes/TopMenu.jsp"%>
+            <!-- end .top-menu -->
+
+            <div class="main-baner">
+
+                <div class="fullscreen background parallax clearfix" style="background-image:url('img/tumblr_n7yhhvUQtx1st5lhmo1_1280.jpg');" data-img-width="1600" data-img-height="1064">
+
+                    <div class="main-parallax-content">
+
+                        <div class="second-parallax-content">
+                            <%@include file="includes/header.jsp" %>
+                            <!-- end .container -->
+
+                        </div><!-- end .second-parallax-content -->
+
+                    </div><!-- end .main-parallax-content -->
+
+                </div><!-- end .background .parallax -->
+
+            </div><!-- end .main-baner -->
+
+        </header><!-- end .header -->
+
+        <section class="main-content">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="page-content">
+
+                        <div class="services clearfix">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="page-sub-title textcenter">
+                                    <h2>Services</h2>
+                                    <div class="line"></div>
+                                </div><!-- end .page-sub-title -->
+
+                            </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                                <article class="service">
+
+                                    <i class="fa fa-car"></i>
+
+                                    <h3>Share your ride</h3>
+                                    <p>Are you getting sick of traveling alone and spent so much money on gas? Share your ride today,and forget about this problems.</p>
+
+
+                                </article><!-- end .service -->
+
+                            </div><!-- end .col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                                <article class="service">
+
+                                    <i class="fa fa-users"></i>
+
+                                    <h3>Find new friends</h3>
+                                    <p>Finding new friends is easier than ever,nothing makes better friendship than spending few hours casually chatting with some interesting people.</p>
+
+                                </article><!-- end .service -->
+
+                            </div><!-- end .col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                                <article class="service">
+
+                                    <i class="fa fa-map-marker"></i>
+
+                                    <h3>Go to new places</h3>
+                                    <p> Find some new favourite place to chill out,you have no longer got excuse for not travelling and discovering. </p>
+
+                                </article><!-- end .service -->
+
+                            </div><!-- end .col-md-4 -->
+
+                        </div><!-- end .services -->
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            <div class="background parallax" style="background-image:url('img/XWBIL5.jpg');" data-img-width="1600" data-img-height="1064">
+
+                                <div class="main-parallax-content">
+
+                                    <div class="second-parallax-content">
+
+                                        <div class="parallax-content clearfix">
+
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="site-stat">
+                                                    <% UserService use = new UserService();
+                                                        int cmp = 0;
+                                                        for (User u : use.findAll()) {
+                                                            cmp += 1;
+                                                        }
+                                                    %>
+                                                    <span class="counter"><%= cmp%></span>
+                                                    <span>users</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="site-stat">
+                                                    <% TrajetService ts=new TrajetService();
+                                                        int cmp2 = 0;
+                                                        for (Trajet u : ts.findAll()) {
+                                                            cmp2 += 1;
+                                                        }
+                                                    %>
+                                                    <span class="counter"><%= cmp2%></span>
+                                                    <span>Successful rides</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="site-stat">
+                                                    <span class="counter">5000</span>
+                                                    <span>Miles traveled in a good company</span>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- end .parallax-content -->
+
+                                    </div><!-- end .main-parallax-content -->
+
+                                </div><!-- end .paralax -->
+
+                            </div><!-- end .fullscreen .background .parallax -->
+
+                        </div><!-- end .col-md-12 -->
+
+                        <div class="clearfix"></div>
+
+                        <div class="last-rides">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="page-sub-title textcenter">
+                                    <h2>Last rides</h2>
+                                    <div class="line"></div>
+                                </div><!-- end .page-sub-title -->
+
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <%for (Trajet t : ts.findAll()) {%>
+
+
+                                <article class="ride-box clearfix">
+
+                                    <div class="ride-content">
+                                        <h3><a href="#">From <b><%= t.getVilleDepart().getNom()%></b> to <b><%= t.getVilleArriver().getNom()%></b></a> ride by <a href="#"><b><%= t.getUser().getNom()%></b></a>
+                                    </div>
+
+                                    <ul class="ride-meta">
+
+                                        <li class="ride-date">
+                                            <a href="#" class="tooltip-link" data-original-title="Date" data-toggle="tooltip">
+                                                <i class="fa fa-calendar"></i>
+                                                <%= t.getDateDepart()%> at <%= t.getHeureDepart()%>
+                                            </a>
+                                        </li><!-- end .ride-date -->
+
+                                        <li class="ride-people">
+                                            <a href="#" class="tooltip-link" data-original-title="Number of seats" data-toggle="tooltip">
+                                                <i class="fa fa-user"></i>
+                                                <%= t.getNbrPlace()%>
+                                            </a>
+                                        </li><!-- end .ride-people -->
+
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-file"></i>
+                                                Read more
+                                            </a>
+                                        </li>
+
+                                    </ul><!-- end .ride-meta -->
+
+                                </article><!-- end .ride-box -->
+                                <%}%>
+                                <!-- end .ride-box -->
+
+                                <div class="clearfix"></div>
+
+                                <div class="read-all pagination-margin">
+                                    <a href="rides.jsp">Read all</a>
+                                </div>
+
+                            </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+                        </div><!-- end .last-rides -->
+
+                        <div class="clearfix"></div>
+
+                        <div class="events box-fix">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="page-sub-title textcenter">
+                                    <h2>Events</h2>
+                                    <div class="line"></div>
+                                </div><!-- end .page-sub-title -->
+
+                            </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="event vertical vertical-two">
+                                    <figure>
+                                        <img src="img/events/event-1.jpg" alt="" >
+                                    </figure>
+                                    <div class="event-info">
+                                        <div class="box event-name">
+                                            <h3>Live concert</h3>
+                                        </div>
+                                        <div class="box event-ride">
+                                            10 ride
+                                        </div>
+                                        <div class="box event-read">
+                                            <a href="#">View all</a>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                                    <nav class="cl-effect-4" id="cl-effect-4">
-                                        <ul class="nav navbar-nav menu__list">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="#about" class=" scroll">About</a></li>
-                                            <li><a href="#team" class=" scroll">Team</a></li>
-                                            <li><a href="#gallery" class=" scroll">Destinations</a></li>
-                                            <li><a href="#contact" class=" scroll">Contact</a></li>
-                                        </ul>
-                                    </nav>
+                            </div>
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="event horizontal-one">
+                                    <figure>
+                                        <img src="img/events/event-2.jpg" alt="" >
+                                    </figure>
+                                    <div class="event-info">
+                                        <div class="box event-name">
+                                            <h3>Live concert</h3>
+                                        </div>
+                                        <div class="box event-ride">
+                                            200 ride
+                                        </div>
+                                        <div class="box event-read">
+                                            <a href="#">View all</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </nav>	
-                        </div>
-                        <div class="clearfix"></div>
-                        <!-- //navigation -->
-                    </header>
-                    <!-- //header -->
-                    <!-- banner-text -->
-                    <div class="banner-text"> 
-                        <h2>Hundreds of Destinations Worldwide</h2>
-                        <div class="book-form" id="register">
-                            <p>Pick your destination</p>
-                            <form action="#" method="post">
-                                <div class="col-md-3 form-time-w3layouts">
-                                    <label>Travelling From</label>
-                                    <select class="form-control" id="from">
-                                        <option>From</option>
-                                        <% for(Ville v:vs.findAll()){ %>
-                                        <option value="<%= v.getId() %>"><%= v.getNom()%></option>
-                                        <%}%>
-                                    </select>
+                            </div>
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="event horizontal-one">
+                                    <figure>
+                                        <img src="img/events/event-3.jpg" alt="" >
+                                    </figure>
+                                    <div class="event-info">
+                                        <div class="box event-name">
+                                            <h3>Live concert</h3>
+                                        </div>
+                                        <div class="box event-ride">
+                                            100 ride
+                                        </div>
+                                        <div class="box event-read">
+                                            <a href="#">View all</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-3 form-left-agileits-w3layouts ">
-                                    <label>Travelling To</label>
-                                    <select class="form-control" id="too">
-                                        <option>To</option>
-                                        <% for(Ville v:vs.findAll()){ %>
-                                        <option value="<%= v.getId() %>"><%= v.getNom()%></option>
-                                        <%}%>
-                                    </select>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="read-all pagination-margin">
+                                    <a href="events.html">Show all events</a>
                                 </div>
-                                <div class="col-md-3 ">
-                                    <label>Departure Date</label>
-                                    <input  id="dateTrajet" type="date">
-                                </div>
-                                <div class="col-md-3 form-left-agileits-submit">
-                                    <br>
-                                    <input type="button" style="width: 150px" class="btn btn-warning" value="search" id="findTrajet">
-                                </div>
-                            </form>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="banner-btm-agileits">
-                            <div class="col-md-4 bann-left-w3-agile">
-                                <h3><span>24/7</span>Support</h3>
-                            </div>
-                            <div class="col-md-4 button-agileits">
-                                <a href="#contact" class="hvr-ripple-out scroll">Get in touch</a>
-                            </div>
-                            <div class="col-md-4 bann-right-wthree">
-                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                <a href="mailto:info@example.com">info@example.com</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- //banner -->
-        <!-- trajet -->
-        <div class="trajet" id="trajet">
-            <br><div class="row col-md-12"><div class="col-md-4"></div><div class="col-md-4"><h1 style=text-align:center">Liste Des Trajets</h1></div><div class="col-md-4"></div></div>
-            <br><br><br>
-            <div class="row col-md-12">
-                <div class="col-md-4" style="float: left">
-                    <div class="thumbnail">
-                        <div class="caption">
-                            <h2>Thumbnail label</h2>
-                            <p>klfjd</p>
-                            <p>klfjd</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--  -->
-        <!-- about -->
-        <!-- banner-bottom -->
-        <div class="about" id="about">
-            <div class="col-md-6 banner_bottom_right">
-                <div class="wthree_banner_bottom_right_grids">
-                    <div class="col-md-6 banner_bottom_right_grid">
-                        <div class="view view-tenth color1-w3">
-                            <div class="agile_text_box">
-                                <h3>More Than 7M Visitors Each Month</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-                            </div>
-                            <div class="mask">
-                                <img src="vendorC/images/a1.jpg" class="img-responsive" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 banner_bottom_right_grid one-w3ls">
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="wthree_banner_bottom_right_grids">
-                    <div class="col-md-6 banner_bottom_right_grid two-w3ls">
-                    </div>
-                    <div class="col-md-6 banner_bottom_right_grid">
-                        <div class="view view-tenth color2-w3">
-                            <div class="agile_text_box">
-                                <h3>Fast and Reliable Ticket Booking</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-                            </div>
-                            <div class="mask">
-                                <img src="vendorC/images/a4.jpg" class="img-responsive" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <div class="col-md-6 banner_bottom_left">
-                <h3 class="title-agileits-w3layouts white-w3ls">Welcome to Wacky Trip</h3>
-                <h4>A few words about us</h4>
-                <p class="para-w3l">Quis nostrum exercitationem ullam corporis suscipit 
-                    laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
-                    reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-                    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-                <div class="button-agileits">
-                    <a href="#register" class="hvr-ripple-out destination-w3ls scroll">Register</a>
-                    <a href="#" class="hvr-ripple-out" data-toggle="modal" data-target="#myModal2">Read More</a>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-        <!-- banner-bottom -->
-        <!-- Modal2 -->
-        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+
+                            </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+                        </div><!-- end .events -->
+
+                    </div><!-- end .page-content -->
+
+                </div><!-- end .row -->
+            </div><!-- end .container -->
+
+        </section><!-- end .main-content -->
+        <%@include file="includes/Footer.jsp" %>
+        <!-- end #footer -->
+
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <!-- Modal content-->
                 <div class="modal-content">
+
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4>Wacky Trip</h4>
-                        <img src="vendorC/images/banner.jpg" alt=" " class="img-responsive">
-                        <h5>More Than 7M Visitors Each Month</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- //Modal2 -->
-        <!-- //about -->
-        <!-- services -->
-        <div class="services" id="services">
-            <div class="container">
-                <h3 class="title-agileits-w3layouts">How to find the path to your dream trip</h3>
-                <div class="col-md-5 services-left-agileinfo">
-                    <div class="profile-pic-w3ls">
-                        <div class="pic-w3layouts">
-                            <img src="vendorC/images/prof1.jpg" alt="Image">
-                        </div>
-                        <h5>Jack anderson<span>Co-Founder</span></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu sollicitudin metus. Donec quis mauris velit. Praesent eu faucibus enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
-                    </div>
-                    <div class="profile-btm-w3l profile-pic-w3ls">
-                        <i class="fa fa-quote-right" aria-hidden="true"></i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu sollicitudin metus. Donec quis mauris velit. Praesent eu faucibus enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
-                        <h6>Nicholas Rodriguez</h6>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="col-md-7 services-right-agileits">
-                    <div class="services-services">
-                        <div class="services-grids">
-                            <h6>Hotel Booking</h6>
-                        </div>
-                        <div class="services-grids">
-                            <h6>Air flights</h6>
-                        </div>
-                        <div class="services-grids">
-                            <h6>Car rentals</h6>
-                        </div>
-                        <div class="services-grids">
-                            <h6>Travel guides</h6>
-                        </div>
-                        <div class="services-grids">
-                            <h6>travel insurance</h6>
-                        </div>
-                        <div class="services-grids">
-                            <h6>destinations</h6>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="profile-pic-w3ls">
-                        <div class="pic-w3layouts">
-                            <img src="vendorC/images/prof2.jpg" alt="Image">
-                        </div>
-                        <h5>Margaret Lucas<span>Travel Advisor</span></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu sollicitudin metus. Donec quis mauris velit. Praesent eu faucibus enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- //services -->
-        <!--team-->
-        <div class="team" id="team">
-            <div class="w3agile-spldishes">
-                <div class="container">
-                    <h3 class="title-agileits-w3layouts white-w3ls">Meet Our Team</h3>
-                    <div class="spldishes-agileinfo">
-                        <div class="spldishes-grids">
-                            <!-- Owl-Carousel -->
-                            <div id="owl-demo" class="owl-carousel text-center agileinfo-gallery-row">
-                                <div class="item g1">
-                                    <img class="lazyOwl" src="vendorC/images/t1.jpg" title="Our Team" alt=""/>
-                                    <div class="agile-dish-caption">
-                                        <h4>Jack Anderson</h4>
-                                        <p>Co-Founder</p>
-                                        <span>Neque porro quisquam est qui dolorem Lorem ipsum dolor sit amet. </span>
-                                        <ul class="top-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="item g1">
-                                    <img class="lazyOwl" src="vendorC/images/t2.jpg" title="Our Team" alt=""/>
-                                    <div class="agile-dish-caption">
-                                        <h4>Margaret Lucas</h4>
-                                        <p>Travel Advisor</p>
-                                        <span>Neque porro quisquam est qui dolorem Lorem ipsum dolor sit amet. </span>
-                                        <ul class="top-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="item g1">
-                                    <img class="lazyOwl" src="vendorC/images/t3.jpg" title="Our Team" alt=""/>
-                                    <div class="agile-dish-caption">
-                                        <h4>Randy McDonald</h4>
-                                        <p>Travel Advisor</p>
-                                        <span>Neque porro quisquam est qui dolorem Lorem ipsum dolor sit amet. </span>
-                                        <ul class="top-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="item g1">
-                                    <img class="lazyOwl" src="vendorC/images/t4.jpg" title="Our Team" alt=""/>
-                                    <div class="agile-dish-caption">
-                                        <h4>Jason Carlson</h4>
-                                        <p>Travel Agent</p>
-                                        <span>Neque porro quisquam est qui dolorem Lorem ipsum dolor sit amet. </span>
-                                        <ul class="top-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="item g1">
-                                    <img class="lazyOwl" src="vendorC/images/t5.jpg" title="Our Team" alt=""/>
-                                    <div class="agile-dish-caption">
-                                        <h4>Nicholas Doe</h4>
-                                        <p>Cruise Master Agent</p>
-                                        <span>Neque porro quisquam est qui dolorem Lorem ipsum dolor sit amet. </span>
-                                        <ul class="top-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div> 
-                                <div class="item g1">
-                                    <img class="lazyOwl" src="vendorC/images/t6.jpg" title="Our Team" alt=""/>
-                                    <div class="agile-dish-caption">
-                                        <h4>Debra Lucas</h4>
-                                        <p>Travel Agent</p>
-                                        <span>Neque porro quisquam est qui dolorem Lorem ipsum dolor sit amet. </span>
-                                        <ul class="top-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>  
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--//team-->
-        <!-- gallery -->
-        <div class="gallery" id="gallery">
-            <div class="container">  
-                <h3 class="title-agileits-w3layouts">Popular destinations</h3>
-                <div class="gallery-grids-top">
-                    <div class="gallery-grids">
-                        <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img"> 
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s1.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s1.jpg" alt=""/> 
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a> 
-                        </div>  
-                        <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s2.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s2.jpg" alt=""/> 
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a> 
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s3.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s3.jpg" alt=""/> 
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a> 
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 gallery-grid-img gallery-mdl hover ehover14"> 
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s4.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s4.jpg" alt=""/> 
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a>
-                        </div>  
-                        <div class="col-md-6 col-sm-6 col-xs-6 gallery-grid-img gallery-mdl hover ehover14">
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s5.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s5.jpg" alt=""/>
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a> 
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14"> 
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s6.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s6.jpg" alt=""/>
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a> 
-                        </div>  
-                        <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s7.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s7.jpg" alt=""/> 
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a> 
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                            <a class="example-image-link w3-agilepic" href="vendorC/images/s8.jpg" data-lightbox="example-set" data-title="">
-                                <img class="example-image img-responsive" src="vendorC/images/s8.jpg" alt=""/>
-                                <div class="w3ls-overlay">
-                                    <h4>Destinations</h4>
-                                </div> 
-                            </a>
-                        </div>	
-                        <div class="clearfix"> </div>	
-                    </div> 
-                </div> 
-            </div>
-        </div>
-        <!-- //gallery -->  
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div><!-- end .modal-header -->
 
-        <!-- testimonials -->
-        <div class="testimonials" id="testimonials">
-            <div class="container">
-                <h3 class="title-agileits-w3layouts white-w3ls">Trusted Customers</h3>
-                <div class="w3_testimonials_grids">
-                    <section class="slider_test_monials">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                <li>
-                                    <div class="w3_testimonials_grid_left">
-                                        <p>" Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
-                                            quis bibendum lorem purus lobortis nunc. Suspendisse tincidunt eu sapien 
-                                            pellentesque interdum. Aenean lacus sapien, blandit vel nibh in, imperdiet 
-                                            egestas erat.</p>
-                                    </div>
-                                    <div class="w3_testimonials_grid_right">
-                                        <img src="vendorC/images/test1.jpg" alt=" " class="img-responsive" />
-                                    </div>
+                    <div class="modal-body">
+                        <form action="../Login" novalidate autocomplete="off" class="idealforms login">
 
-                                </li>
-                                <li>
-                                    <div class="w3_testimonials_grid_left">
-                                        <p>" Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
-                                            quis bibendum lorem purus lobortis nunc. Suspendisse tincidunt eu sapien 
-                                            pellentesque interdum. Aenean lacus sapien, blandit vel nibh in, imperdiet 
-                                            egestas erat.</p>
-                                    </div>
-                                    <div class="w3_testimonials_grid_right">
-                                        <img src="vendorC/images/test2.jpg" alt=" " class="img-responsive" />
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="w3_testimonials_grid_left">
-                                        <p>" Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
-                                            quis bibendum lorem purus lobortis nunc. Suspendisse tincidunt eu sapien 
-                                            pellentesque interdum. Aenean lacus sapien, blandit vel nibh in, imperdiet 
-                                            egestas erat.</p>
-                                    </div>
-                                    <div class="w3_testimonials_grid_right">
-                                        <img src="vendorC/images/test3.jpg" alt=" " class="img-responsive" />
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="w3_testimonials_grid_left">
-                                        <p>" Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
-                                            quis bibendum lorem purus lobortis nunc. Suspendisse tincidunt eu sapien 
-                                            pellentesque interdum. Aenean lacus sapien, blandit vel nibh in, imperdiet 
-                                            egestas erat.</p>
-                                    </div>
-                                    <div class="w3_testimonials_grid_right">
-                                        <img src="vendorC/images/test4.jpg" alt=" " class="img-responsive" />
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-        <!-- //testimonials -->	
-        <div class="contact" id="contact">
-            <div class="container">  
-                <h3 class="title-agileits-w3layouts">Contact Us</h3>
-                <form action="#" method="post">
-                    <div class="col-md-6">
-                        <div class="styled-input agile-styled-input-top">
-                            <input type="text" name="Name" required="">
-                            <label>Name</label>
-                            <span></span>
-                        </div>
-                        <div class="styled-input">
-                            <input type="email" name="Email" required=""> 
-                            <label>Email</label>
-                            <span></span>
-                        </div> 
-                        <div class="styled-input">
-                            <input type="text" name="Subject" required="">
-                            <label>Subject</label>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="styled-input textarea-w3ls">
-                            <textarea name="Message" required=""></textarea>
-                            <label>Message</label>
-                            <span></span>
-                        </div>	 
-                        <input type="submit" value="SEND">
-                    </div>
-                </form>
-                <div class="clearfix"> </div>	
-            </div>
-        </div>
-        <div class="map-w3-agile">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1401095.1797624144!2d7.051648809385445!3d46.695591802572785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479aa7f454717f6d%3A0x452444bf73cbc87a!2sBest+of+Switzerland+Tours+AG!5e0!3m2!1sen!2sin!4v1494325075835"></iframe>
-        </div>
-        <div class="col-md-4 subscribe-grid">
-            <h5>Subscribe for our latest updates</h5>
-            <p>Get <span>10%</span> off on booking</p>
-            <form action="#" method="post">
-                <input type="email" placeholder="Subscribe" name="Subscribe" required="">
-                <button class="btn1"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-            </form>
-        </div>
-        <div class="col-md-8 footer-w3layouts">
-            <div class="footer-top-agile">
-                <h6><a href="index.html"><span>W</span>acky <span>T</span>rip</a></h6>
-                <div class="footer-contact-w3ls">
-                    <ul>
-                        <li><i class="fa fa-globe" aria-hidden="true"></i>55, 8134 Adliswil, Switzerland</li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>012 345 6789</li>
-                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-                    </ul>
-                </div>
-                <div class="clearfix"> </div>
-                <ul class="top-links">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="footer-bottom-wthree">
-                <div class="copyright-wthree">
-                    <p>&copy; 2017 Wacky Trip . All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts </a></p>
-                    <a href="#home" class="scroll bt-icon"><i class="fa fa-upload" aria-hidden="true"></i></a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <!-- //Footer -->
-        <script src="vendorC/js/jquery-2.2.3.min.js"></script> 
+                            <div class="log-header">
+                                <span class="log-in">Log in</span>
+                            </div>
 
-        <script src="vendorC/js/lightbox-plus-jquery.min.js"></script>	
-        <!-- Owl-Carousel-JavaScript -->
-        <script src="vendorC/js/owl.carousel.js"></script>
-        <script>
-                                        $(document).ready(function () {
-                                            $("#owl-demo").owlCarousel({
-                                                items: 4,
-                                                lazyLoad: true,
-                                                autoPlay: true,
-                                                pagination: true,
-                                            });
-                                        });
-        </script>
-        <!-- //Owl-Carousel-JavaScript -->  
-        <!-- flexSlider -->
-        <script defer src="vendorC/js/jquery.flexslider.js"></script>
-        <script type="text/javascript">
-                                        $(window).load(function () {
-                                            $('.flexslider').flexslider({
-                                                animation: "slide",
-                                                start: function (slider) {
-                                                    $('body').removeClass('loading');
-                                                }
-                                            });
-                                        });
-        </script>
-        <!-- //flexSlider -->
-        <!-- Move-top-scrolling -->
-        <script type="text/javascript" src="vendorC/js/move-top.js"></script>
-        <script type="text/javascript" src="vendorC/js/easing.js"></script>
-        <script type="text/javascript">
-                                        jQuery(document).ready(function ($) {
-                                            $(".scroll").click(function (event) {
-                                                event.preventDefault();
-                                                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-                                            });
-                                        });
-        </script>
-        <!-- Move-top-scrolling -->
-        <!-- Calendar -->
-        <link rel="stylesheet" href="vendorC/css/jquery-ui.css" />
-        <script src="vendorC/js/jquery-ui.js"></script>
-        <!-- //Calendar -->
-        <!--js for bootstrap working-->
-        <script src="vendorC/js/bootstrap.js"></script>
-        <!-- //for bootstrap working -->
-        <script src="scripts/trajet.js"></script>
+                            <div class="field">
+                                <input name="email" type="text" placeholder="E-mail">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <input type="password" name="password" placeholder="Password">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field buttons">
+                                <button type="submit" class="submit btn green-color">Log in</button>
+                            </div>
+
+                            <a href="#" class="log-twitter twitter"><i class="fa fa-twitter"></i>Twitter</a>
+                            <a href="#" class="log-facebook facebook"><i class="fa fa-facebook"></i>Facebook</a>
+
+                            <div class="clearfix"></div>
+
+                        </form><!-- end .login -->
+                    </div><!-- end .modal-body -->
+
+                </div><!-- end .modal-content -->
+            </div><!-- end .modal-dialog -->
+        </div><!-- end .modal -->
+
+        <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <%@include file="includes/inscription.jsp" %>
+            </div><!-- end .modal-dialog -->
+        </div><!-- end .modal -->
+
+        <!-- Javascript -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- Main jQuery -->
+        <script type="text/javascript" src="js/jquery.main.js"></script>
+        <!-- Form -->
+        <script type="text/javascript" src="js/jquery.idealforms.min.js"></script>
+        <script type="text/javascript" src="js/jquery.idealselect.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+        <!-- Menu -->
+        <script type="text/javascript" src="js/hoverIntent.js"></script>
+        <script type="text/javascript" src="js/superfish.js"></script>
+        <!-- Counter-Up  -->
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+        <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+        <!-- Rating  -->
+        <script type="text/javascript" src="js/bootstrap-rating-input.min.js"></script>
+        <!-- Slicknav  -->
+        <script type="text/javascript" src="js/jquery.slicknav.min.js"></script>
+        <script src="script/User.js" type="text/javascript"></script>
     </body>
 </html>
